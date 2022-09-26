@@ -131,13 +131,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-# STATIC_ROOT = os.path.join(BASE_DIR,'static')
-# STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATIC_URL = '/static/'
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
+STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
+STATIC_URL = 'static/'
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# STATIC_URL = '/static/'
+# STATICFILES_DIRS = (
+#     os.path.join(BASE_DIR, 'static'),
+# )
 django_heroku.settings(locals())
 
 # STATICFILES_DIRS=[
@@ -162,10 +162,9 @@ ACCOUNT_DEFAULT_HTTP_PROTOCOL='http'
 # EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 EMAIL_HOST = 'smtp.mailtrap.io'
-EMAIL_HOST_USER = env('email_username')
-EMAIL_HOST_PASSWORD = env('email_password')
-EMAIL_PORT = env('email_port')
-
+EMAIL_HOST_USER ='690e857648e1c7'
+EMAIL_HOST_PASSWORD ='61d720f9125559'
+EMAIL_PORT = '2525'
 
 # EMAIL_HOST = 'smtp.gmail.com'
 # EMAIL_HOST_USER = 'badugudinesh94@gmail.com'
