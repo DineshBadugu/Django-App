@@ -1,2 +1,2 @@
 release:python manage.py migrate
-web :gunicorn Dineshtech.wsgi --log-file =-
+web: gunicorn Dineshtech.wsgi --log-file =-

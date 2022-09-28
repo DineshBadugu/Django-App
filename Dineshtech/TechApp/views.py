@@ -1,5 +1,5 @@
 from urllib import response
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .models import ContactForm
 from django.http import HttpResponse
 from django.core.mail import send_mail
@@ -28,25 +28,38 @@ def ConctactData(request):
         oContactinfo = ContactForm(Name=name,Email=email,Subject=subject,Message=message)
         oContactinfo.save()
         sucess =f'hi {name} sucessfully Sending email'
-        configuration = sib_api_v3_sdk.Configuration()
-        configuration.api_key['api-key'] = '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'
-        api_instance = sib_api_v3_sdk.TransactionalEmailsApi(sib_api_v3_sdk.ApiClient(configuration))
-        subject = subject
-        html_content = message
-        sender = {"name": name, "email": email}
-        to = [{"email": 'badugudinesh94@gmail.com', "name": 'DT7Solutions'}]
-        headers = {"Some-Custom-Name": "unique-id-1234"}
-        send_smtp_email = sib_api_v3_sdk.SendSmtpEmail(to=to, headers=headers,html_content=html_content, sender=sender, subject=subject)
+        message ='''
+        Subject:{}
+        Message:{}
+        From:{}
+        '''.format(subject,message,email)
         try:
-            api_response = api_instance.send_transac_email(send_smtp_email)
-            pprint(api_response)
-            messages.success(request, sucess)
+            send_mail(subject, message,'noreplaybadugudinesh94@gmail.com',recipient_list=['badugudinesh94@gmail.com']) 
+            messages.info(request,f'hi {name} sucessfully Sending email')
         except ApiException as e:
             print("Exception when calling SMTPApi->send_transac_email: %s\n" % e)
-        #return HttpResponse(sucess)
-        return render(request, 'uifiles/index.html', locals())
+        return 'successfully'
+       # return render(request, "uifiles/index.html")
 
-#dt7solutions@gmail.com
+        # configuration = sib_api_v3_sdk.Configuration()
+        # configuration.api_key['api-key'] = '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'
+        # api_instance = sib_api_v3_sdk.TransactionalEmailsApi(sib_api_v3_sdk.ApiClient(configuration))
+        # subject = subject
+        # html_content = message
+        # sender = {"name": name, "email": email}
+        # to = [{"email": 'badugudinesh94@gmail.com', "name": 'DT7Solutions'}]
+        # headers = {"Some-Custom-Name": "unique-id-1234"}
+        # send_smtp_email = sib_api_v3_sdk.SendSmtpEmail(to=to, headers=headers,html_content=html_content, sender=sender, subject=subject)
+        # try:
+        #     api_response = api_instance.send_transac_email(send_smtp_email)
+        #     pprint(api_response)
+        #     messages.success(request, sucess)
+        # except ApiException as e:
+        #     print("Exception when calling SMTPApi->send_transac_email: %s\n" % e)
+        # #return HttpResponse(sucess)
+        #return render(request, "uifiles/index.html")
+
+
         # message ='''
         # Subject:{}
         # Message:{}
