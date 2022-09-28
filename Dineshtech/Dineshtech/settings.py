@@ -10,7 +10,6 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 import os
-import environ
 from pathlib import Path
 
 
@@ -35,13 +34,16 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # 'rest_framework',
+    # 'rest_framework_swagger',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'TechApp'
+    'TechApp',
+    
 ]
 
 MIDDLEWARE = [
@@ -79,16 +81,19 @@ WSGI_APPLICATION = 'Dineshtech.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd8q9sjtqmdli0v',
-        'USER': 'mnmvpsjwzehkrj',
-        'PASSWORD': '7f7cbfbc8164b71b775e2af4e3974aac82d11c18fe61cc3486401a7c5796601d',
-        'HOST': 'ec2-18-209-78-11.compute-1.amazonaws.com',
-        'PORT': '5432',
-    }
 
-    
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    #     'NAME': 'Dineshtech',
+    #     'USER': 'postgres',
+    #     'PASSWORD': 'Dinesh@1994',
+    #     'HOST': '127.0.0.1',
+    #     'PORT': '5432',
+    # }   
 }
 
 
@@ -145,23 +150,23 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 #create .env file 
-env = environ.Env()
-environ.Env.read_env()
 
 SITE_ID = 1
 ACCOUNT_DEFAULT_HTTP_PROTOCOL='http' 
 
+#email sending with smatp
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'badugudinesh94@gmail.com'
+EMAIL_HOST_PASSWORD = 'bqudzklawtmskykk'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
 
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+#using mailtrap
 
-EMAIL_HOST = 'smtp.mailtrap.io'
-EMAIL_HOST_USER ='690e857648e1c7'
-EMAIL_HOST_PASSWORD ='61d720f9125559'
-EMAIL_PORT = '2525'
+# EMAIL_HOST = 'smtp.mailtrap.io'
+# EMAIL_HOST_USER ='690e857648e1c7'
+# EMAIL_HOST_PASSWORD ='61d720f9125559'
+# EMAIL_PORT = '2525'
 
-# EMAIL_HOST = 'smtp.gmail.com'
-# EMAIL_HOST_USER = 'badugudinesh94@gmail.com'
-# EMAIL_HOST_PASSWORD = '123456789B'
-# EMAIL_PORT = 587
-# EMAIL_USE_TLS = True
-# EMAIL_USE_SSL = False

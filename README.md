@@ -13,7 +13,7 @@
 #python -m venv env-dt7
 
 # activate virtual environment
-#env-dinesh\Scripts\activate
+#env-DT7\Scripts\activate
 
 # install libs
 pip freeze > requirements.txt 
