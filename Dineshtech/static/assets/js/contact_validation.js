@@ -15,9 +15,7 @@ contactform.addEventListener('submit', function(event){
               message:$("#message").val(),
               csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val()
             },
-            success:function(data){
-              alert(data)
-            }
+            
         })
         inputs.forEach(input => input.value = '');
         textariea.value =''

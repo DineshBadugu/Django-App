@@ -34,7 +34,7 @@ def ConctactData(request):
         subject = subject
         html_content = message
         sender = {"name": name, "email": email}
-        to = [{"email": 'dt7solutions@gmail.com', "name": 'DT7Solutions'}]
+        to = [{"email": 'badugudinesh94@gmail.com', "name": 'DT7Solutions'}]
         headers = {"Some-Custom-Name": "unique-id-1234"}
         send_smtp_email = sib_api_v3_sdk.SendSmtpEmail(to=to, headers=headers,html_content=html_content, sender=sender, subject=subject)
         try:
@@ -43,9 +43,10 @@ def ConctactData(request):
             messages.success(request, sucess)
         except ApiException as e:
             print("Exception when calling SMTPApi->send_transac_email: %s\n" % e)
-    return render(request, 'email.html', locals())
+        #return HttpResponse(sucess)
+        return render(request, 'uifiles/index.html', locals())
 
-
+#dt7solutions@gmail.com
         # message ='''
         # Subject:{}
         # Message:{}

@@ -703,6 +703,7 @@
 
             <form class="php-email-form" id="contactform" method="post">
               {% csrf_token %}
+              {% for i in messages %}<script>alert("{{i}}");</script>{% endfor %}
               <div class="row">
                 <div class="col-md-6 form-group">
                   <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
