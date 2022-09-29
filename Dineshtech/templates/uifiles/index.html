@@ -28,7 +28,7 @@
 
   <!-- Template Main CSS File -->
   <link href="{% static 'assets/css/style.css' %} " rel="stylesheet">
-
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <!-- =======================================================
   * Template Name: Gp - v4.9.0
   * Template URL: https://bootstrapmade.com/gp-free-multipurpose-html-bootstrap-template/
@@ -87,7 +87,7 @@
 
       <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="150">
         <div class="col-xl-6 col-lg-8">
-          <h1>Powerful Digital Solutions With Gp<span>.</span></h1>
+          <h1>Powerful Digital Solutions With DineshTech<span>.</span></h1>
           <h2>We are team of talented digital marketers</h2>
         </div>
       </div>
@@ -703,8 +703,8 @@
 
             <form class="php-email-form" id="contactform" method="post">
               {% csrf_token %}
-              {% for i in messages %}
-              <h4 class="alertbox">{{i}}</h4>
+              {% for msg in messages %}
+              <script>swal("Good job!",{{msg}} "success");</script>
               {% endfor %}
               <div class="row">
                 <div class="col-md-6 form-group">
@@ -826,7 +826,7 @@
 
   <!-- Template Main JS File -->
   <script src="{% static 'assets/js/main.js' %}"></script>
-
+  
 </body>
 
 </html>

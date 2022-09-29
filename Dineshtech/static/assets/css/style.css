@@ -1574,5 +1574,6 @@ section {
 
 /*alertbox*/
 .alertbox { 
-   color:#18d26e
+   color:#18d26e;
+   border: 1px solid black;
 }
