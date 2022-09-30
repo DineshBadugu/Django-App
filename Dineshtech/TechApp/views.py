@@ -9,11 +9,7 @@ import sib_api_v3_sdk
 from sib_api_v3_sdk.rest import ApiException
 from pprint import pprint
 from django.contrib import messages
-#rest_framework 
-# from rest_framework.decorators import api_view
-# from rest_framework.response import Response
-# from .serializer import ContactSerializer
-# from rest_framework import status
+
 # Create your views here.
 def Home(request):
     return render(request,"uifiles/index.html")
@@ -48,32 +44,3 @@ def ConctactData(request):
             error = f'hi {name} sucessfully Sending email'
             return  HttpResponse(error)
 
-
-# @api_view(['GET'])
-# def contact_list(request):
-#     contactinfo = ContactForm.objects.all()
-#     serializer = ContactSerializer(contactinfo, many=True)
-#     return Response(serializer.data)
-
-# @api_view(['POST'])
-# def contact_post(request):
-#     serializer = ContactSerializer(data=request.data)
-#     if serializer.is_valid():
-#         serializer.save()
-#         return Response(serializer.data, status=status.HTTP_201_CREATED)
-#     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-# @api_view(['POST'])
-# def contact_update(request,id):
-#     contactinfo = ContactForm.objects.get(id=id)
-#     serializer = ContactSerializer(instance=contactinfo ,data=request.data)
-#     if serializer.is_valid():
-#         serializer.save()
-#         return Response(serializer.data, status=status.HTTP_201_CREATED)
-#     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-# @api_view(['DELETE'])
-# def contact_delete(request,id):
-#     contactinfo = ContactForm.objects.get(id=id)
-#     contactinfo.delete()
-#     return Response('Sucessfully delted the record')
